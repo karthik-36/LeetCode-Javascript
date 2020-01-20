@@ -93,20 +93,35 @@ class BST {
 
           }
           if(node.right == null){
-            node = node.left;
-            return node;
+            return node.left;
           }
           if(node.left == null){
-              node = node.right;
-            return node;
+            return node.right;
           }
+          // node has 2 children
+          var tempNode = node.right;
+          while(tempNode.left != null){
+            tempNode = tempNode.left;
+          }
+          node.data = tempNode.data;
+          node.right = removeNode(node.right, tempNode.data);
+          return node;
+
+
         }
+        else if(data < node.data){
+          node.left = removeNode(node.left, data);
+          return node;
 
+        }
+        else{
+          node.right = removeNode(node.right, data);
+          return node;
 
-
-
-
+        }
       }
+
+    this.root =  removeNode(this.root, data);
 
   }
 
@@ -114,18 +129,14 @@ class BST {
   isBalanced() {
     return (this.findMinHeight() >= this.findMaxHeight() - 1)
   }
+
+
+  /////////////// find min height
   findMinHeight(node = this.root) {
-      if (node == null) {
-          return -1;
-      };
-      let left = this.findMinHeight(node.left);
-      let right = this.findMinHeight(node.right);
-      if (left < right) {
-          return left + 1;
-      } else {
-          return right + 1;
-      };
+
   }
+
+
   findMaxHeight(node = this.root) {
       if (node == null) {
           return -1;
@@ -216,6 +227,23 @@ bst.add(22);
 bst.add(5);
 bst.add(7);
 bst.add(20);
+bst.add(10);
+
+
+console.log(bst.isBalanced());
+
+
+/*
+console.log(bst.isPresent(22));
+
+console.log(bst.isPresent(5));
+console.log(bst.isPresent(7));
+
+console.log(bst.isPresent(20));
+console.log(bst.remove(20));
+
+console.log(bst.isPresent(5));
+*/
 /*
 console.log(bst.findMinHeight());
 console.log(bst.findMaxHeight());
