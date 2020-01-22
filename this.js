@@ -28,3 +28,5 @@ class Car {
 
 let val = new Car("KIA","jap");
 val.DisplayNaA();
+
+// tech sith 
