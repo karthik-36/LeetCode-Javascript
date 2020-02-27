@@ -7,9 +7,12 @@ class Node {
 }
 
 class BST {
+
+
   constructor() {
     this.root = null;
   }
+
   add(data) {
     const node = this.root;
     if (node === null) {
@@ -149,7 +152,14 @@ class BST {
           return right + 1;
       };
   }
+
+
+
+
+
+
   inOrder() {
+
     if (this.root == null) {
       return null;
     } else {
@@ -163,6 +173,9 @@ class BST {
       return result;
     };
   }
+
+
+
   preOrder() {
     if (this.root == null) {
       return null;
@@ -230,7 +243,13 @@ bst.add(20);
 bst.add(10);
 
 
-console.log(bst.isBalanced());
+    var arrayResult = new Array();
+arrayResult = bst.inOrder();
+arrayResult.forEach((item, i) => {
+  console.log(item);
+});
+
+//console.log(bst.isPresent(36));
 
 
 /*
