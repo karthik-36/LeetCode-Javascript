@@ -1,4 +1,4 @@
-var arr = [];
+ var arr = [];
 
 Array.prototype.enque = function(value){
   this.push(value);
