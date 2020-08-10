@@ -21,3 +21,13 @@
     console.log("hello : " + res);
 
 }());
+
+  function maxprofit(weight , points , maxCarry , n){
+    if(n == -1 || maxCarry == -1){
+      return 0;
+    }else if(weight[n] > maxCarry){
+      return maxprofit(weight, points, maxCarry , n - 1);
+    }else{
+
+    }
+  }

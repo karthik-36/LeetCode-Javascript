@@ -38,5 +38,12 @@ console.log(arr);
 //console.log("index at " + binarySearch(arr,2));
 console.log("index at " + binaryInsert(arr,2));
 console.log(arr);
-//arr.splice(2,0,5);
-//console.log(arr);
+
+
+function Car(key1,key2){
+  this.key1 = key1;
+  this.key2 = key2;
+}
+
+const car1 = new Car('Eagle' , 'Talon Tsi');
+console.log(car1.key1);

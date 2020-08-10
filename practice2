@@ -1,0 +1,178 @@
+console.log("hello world");
+var unsortedArr = [340, 1, 3, 3, 76, 23, 4, 12, 122, 7642, 646];
+function merge(leftArr, rightArr) {
+var sortedArr = [];
+  while (leftArr.length && rightArr.length) {
+    if (leftArr[0] <= rightArr[0]) {
+      sortedArr.push(leftArr[0]);
+      leftArr = leftArr.slice(1)
+   } else {
+      sortedArr.push(rightArr[0]);
+      rightArr = rightArr.slice(1)
+     }
+   }
+  while (leftArr.length)
+    sortedArr.push(leftArr.shift());
+  while (rightArr.length)
+    sortedArr.push(rightArr.shift());
+    console.log("sortedArr : " + sortedArr)
+  return sortedArr;
+}
+function mergesort(arr) {
+  console.log(arr)
+  if (arr.length < 2) {
+    return arr; }
+  else {
+    var midpoint = parseInt(arr.length / 2);
+    var leftArr   = arr.slice(0, midpoint);
+    var rightArr  = arr.slice(midpoint, arr.length);
+    return merge(mergesort(leftArr), mergesort(rightArr));
+  }
+}
+console.log('This should be the sorted array!')
+console.log(mergesort(unsortedArr));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+console.log("\n xxxxxxxxxxxxxxxxxxxxx\n ")
+
+/////////////////////////////////////////////////////////xxxxxxxxxxxxxxxx
+
+var unsorted = [340, 1, 3, 3, 76, 23, 4, 12, 122, 7642, 646];
+
+function merger(arr1,arr2){
+//  let totalLength = leftArr.length + rightArr.length;
+  let mergedArr = [];
+  var i=0,j=0;
+  while( i < arr1.length && j < arr2.length ){
+    if(arr1[i] <=  arr2[j]){
+      mergedArr.push(arr1[i]);
+      i++;
+    }
+    if(arr2[j] < arr1[i]){
+      mergedArr.push(arr2[j]);
+      j++;
+    }
+  }
+
+  let min = i + j - (arr1.length + arr2.length);
+  if(i == arr1.length){
+  mergedArr =  mergedArr.concat(arr2.slice(min))
+  }
+  else if(j == arr2.length){
+  mergedArr =  mergedArr.concat(arr1.slice(min))
+  }
+
+  console.log( "mergedArr is : " + mergedArr)
+  return mergedArr;
+}
+
+function mergeSort(arr){
+    console.log(arr);
+  if(arr.length < 2){
+    return arr;
+  }else{
+
+  let mid = arr.length >> 1;
+//  console.log("mid point : " + mid);
+  let leftArr = arr.slice(0,mid);
+  let rightArr = arr.slice(mid);
+//  console.log("left : " + leftArr + "  right : " + rightArr);
+  return merger(mergeSort(leftArr) , mergeSort(rightArr));
+}
+}
+//console.log(mergeSort([1]));
+
+console.log(mergeSort(unsorted));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////
+
+let arr1 = [1,4,5,6,11,12,13];
+let arr2 = [2,6,7,8,9,10];
+
+function mer(arr1,arr2){
+
+  let al = arr1.length;
+  let a2 = arr2.length;
+
+  let combo = [];
+  if(combo.length == 0 ) {
+    console.log(true);
+  }
+
+  var i = 0,j=0;
+  for(; i < arr1.length &&  j < arr2.length ; ){
+      if(arr1[i] <= arr2[j]){
+        combo.push(arr1[i]);
+        //arr1.shift();
+        i++;
+      }
+      else if(arr2[j] < arr1[i]){
+        combo.push(arr2[j]);
+      //  arr2.shift();
+        j++;
+      }
+
+
+      console.log( i + "   " + j + "  " +  combo);
+  }
+
+  console.log(i + "   xx " + j);
+
+  let min = i + j - (arr1.length + arr2.length);
+  console.log(min);
+  if(arr1.length == i){
+  combo = combo.concat(arr2.slice(min));
+  }
+
+  if(arr2.length == j){
+  combo = combo.concat(arr1.slice(min));
+  }
+
+  console.log("final : " +  i + "   " + j + "  " +  combo);
+
+}
+
+//mer(arr1,arr2);
