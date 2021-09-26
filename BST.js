@@ -19,7 +19,7 @@ class BST {
       this.root = new Node(data);
       return;
     } else {
-      const searchTree = function(node) {
+      const searchTree = function (node) {
         if (data < node.data) {
           if (node.left === null) {
             node.left = new Node(data);
@@ -83,52 +83,52 @@ class BST {
     }
     return false;
   }
-//////////////////////////////////////////// Remove Node
+  //////////////////////////////////////////// Remove Node
 
   remove(data) {
-      const removeNode = function(node , data){
-        if(node == null){
-          return null;
-        }
-        if(node.data == data){
-          if(node.left == null && node.right == null){
-              return null;
-
-          }
-          if(node.right == null){
-            return node.left;
-          }
-          if(node.left == null){
-            return node.right;
-          }
-          // node has 2 children
-          var tempNode = node.right;
-          while(tempNode.left != null){
-            tempNode = tempNode.left;
-          }
-          node.data = tempNode.data;
-          node.right = removeNode(node.right, tempNode.data);
-          return node;
-
-
-        }
-        else if(data < node.data){
-          node.left = removeNode(node.left, data);
-          return node;
-
-        }
-        else{
-          node.right = removeNode(node.right, data);
-          return node;
-
-        }
+    const removeNode = function (node, data) {
+      if (node == null) {
+        return null;
       }
+      if (node.data == data) {
+        if (node.left == null && node.right == null) {
+          return null;
 
-    this.root =  removeNode(this.root, data);
+        }
+        if (node.right == null) {
+          return node.left;
+        }
+        if (node.left == null) {
+          return node.right;
+        }
+        // node has 2 children
+        var tempNode = node.right;
+        while (tempNode.left != null) {
+          tempNode = tempNode.left;
+        }
+        node.data = tempNode.data;
+        node.right = removeNode(node.right, tempNode.data);
+        return node;
+
+
+      }
+      else if (data < node.data) {
+        node.left = removeNode(node.left, data);
+        return node;
+
+      }
+      else {
+        node.right = removeNode(node.right, data);
+        return node;
+
+      }
+    }
+
+    this.root = removeNode(this.root, data);
 
   }
 
-////////////////////////////////////
+  ////////////////////////////////////
   isBalanced() {
     return (this.findMinHeight() >= this.findMaxHeight() - 1)
   }
@@ -141,16 +141,16 @@ class BST {
 
 
   findMaxHeight(node = this.root) {
-      if (node == null) {
-          return -1;
-      };
-      let left = this.findMaxHeight(node.left);
-      let right = this.findMaxHeight(node.right);
-      if (left > right) {
-          return left + 1;
-      } else {
-          return right + 1;
-      };
+    if (node == null) {
+      return -1;
+    };
+    let left = this.findMaxHeight(node.left);
+    let right = this.findMaxHeight(node.right);
+    if (left > right) {
+      return left + 1;
+    } else {
+      return right + 1;
+    };
   }
 
 
@@ -206,24 +206,24 @@ class BST {
   }
 
   levelOrder() {
-      let result = [];
-      let Q = [];
-      if (this.root != null) {
-          Q.push(this.root);
-          while(Q.length > 0) {
-              let node = Q.shift();
-              result.push(node.data);
-              if (node.left != null) {
-                  Q.push(node.left);
-              };
-              if (node.right != null) {
-                  Q.push(node.right);
-              };
-          };
-          return result;
-      } else {
-          return null;
+    let result = [];
+    let Q = [];
+    if (this.root != null) {
+      Q.push(this.root);
+      while (Q.length > 0) {
+        let node = Q.shift();
+        result.push(node.data);
+        if (node.left != null) {
+          Q.push(node.left);
+        };
+        if (node.right != null) {
+          Q.push(node.right);
+        };
       };
+      return result;
+    } else {
+      return null;
+    };
   };
 }
 
@@ -243,7 +243,7 @@ bst.add(20);
 bst.add(10);
 
 
-    var arrayResult = new Array();
+var arrayResult = new Array();
 arrayResult = bst.inOrder();
 arrayResult.forEach((item, i) => {
   console.log(item);
