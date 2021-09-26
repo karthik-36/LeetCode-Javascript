@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@metamodules/postgres": "^1.2.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "deploy-node-app": "^1.4.3",
     "dotenv": "^8.0.0",
     "fs": "0.0.1-security",
